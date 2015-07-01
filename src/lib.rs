@@ -4,12 +4,8 @@
 //!
 //! Use `extract()` only when you are 200% sure that an option contains a value.
 
-#![cfg_attr(not(debug_assertions), feature(core))]
 #![deny(missing_docs)]
 #![deny(warnings)]
-
-#[cfg(not(debug_assertions))]
-use std::intrinsics;
 
 /// Extension trait for `Option` that adds the `extract()` method
 pub trait Extract {
@@ -28,7 +24,13 @@ impl<T> Extract for Option<T> {
             #[cfg(debug_assertions)]
             None => unreachable!(),
             #[cfg(not(debug_assertions))]
-            None => intrinsics::unreachable(),
+            None => {
+                enum Void {}
+
+                let void: &Void = std::mem::transmute(1_usize);
+
+                match *void {}
+            },
             Some(x) => x,
         }
     }
