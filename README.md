@@ -1,3 +1,16 @@
+# Status
+
+This project has been **DEPRECATED**. You can use [unreachable]'s  `UncheckedOptionExt` and
+`UncheckedResultExt` traits as a replacement.
+
+[unreachable]: https://crates.io/crates/unreachable
+
+This project won't receive further updates or bug fixes.
+
+-- @japaric, 2016/02/08
+
+---
+
 [![Build Status][status]](https://travis-ci.org/japaric/extract.rs)
 
 # `extract.rs`
